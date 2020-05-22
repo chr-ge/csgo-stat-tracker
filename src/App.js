@@ -4,7 +4,7 @@ import Header from './components/layout/Header';
 import SearchPlayer from './components/SearchPlayer';
 import { PlayerProvider } from './context/PlayerContext';
 
-function App() {
+const App = () => {
   return (
     <PlayerProvider>
       <Header />

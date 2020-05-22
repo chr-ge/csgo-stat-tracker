@@ -1,11 +1,7 @@
 
 import React, { createContext, useReducer } from 'react';
 import PlayerReducer from './PlayerReducer';
-import axios from 'axios';
-
-// axios.defaults.baseURL = 
-//     'https://cors-anywhere.herokuapp.com/';
-axios.defaults.headers.common['TRN-Api-Key'] = '5273ee4d-52a2-4a04-84de-7f5ce799b099';
+import api from '../api/api';
 
 const initialState = {
     player: [],
@@ -19,8 +15,8 @@ export const PlayerProvider = ({ children }) => {
     
     //Actions
     const searchPlayer = (player) => {
-        axios
-            .get(`https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/csgo/standard/search?platform=steam&query=${player}`)
+        api
+            .get(`/search?platform=steam&query=${player}`)
             .then((result) => {
                 if(result.data.data.length === 0) {
                     dispatch({
