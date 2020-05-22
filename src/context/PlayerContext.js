@@ -5,6 +5,9 @@ import API from '../api';
 
 const initialState = {
     player: {},
+    playerOverview: {},
+    playerWeapons: [],
+    playerMaps: [],
     error: ''
 }
 
@@ -36,8 +39,68 @@ export const PlayerProvider = ({ children }) => {
             })
     }
 
+    const getOverview = (playerId) => {
+        API
+            .get(`/profile/steam/${playerId}`)
+            .then((result) => {
+                dispatch({
+                    type: 'SET_OVERVIEW',
+                    payload: result.data.data.segments[0].stats
+                });
+            })
+            .catch((error) => {
+                dispatch({
+                    type: 'SET_ERROR',
+                    payload: error.response.data.errors.message
+                });
+            })
+    }
+
+    const getWeapons = (playerId) => {
+        API
+            .get(`/profile/steam/${playerId}/segments/weapon`)
+            .then((result) => {
+                dispatch({
+                    type: 'SET_WEAPONS',
+                    payload: result.data.data
+                });
+            })
+            .catch((error) => {
+                dispatch({
+                    type: 'SET_ERROR',
+                    payload: error.response.data.errors.message
+                });
+            })
+    }
+
+    const getMaps = (playerId) => {
+        API
+            .get(`/profile/steam/${playerId}/segments/map`)
+            .then((result) => {
+                dispatch({
+                    type: 'SET_MAPS',
+                    payload: result.data.data
+                });
+            })
+            .catch((error) => {
+                dispatch({
+                    type: 'SET_ERROR',
+                    payload: error.response.data.errors.message
+                });
+            })
+    }
+
     return (
-        <PlayerContext.Provider value={{ player: state.player, error: state.error, searchPlayer}}>
+        <PlayerContext.Provider 
+            value={{ 
+                player: state.player, 
+                error: state.error, 
+                searchPlayer, 
+                getOverview,
+                getWeapons,
+                getMaps
+            }}
+        >
             {children}
         </PlayerContext.Provider>
     );

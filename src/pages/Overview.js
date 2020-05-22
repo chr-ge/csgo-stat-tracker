@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
-import Player from '../components/Player';
-
-import Grid from '@material-ui/core/Grid';
 
 const Overview = () => {
+    const { player, playerOverview, getOverview } = useContext(PlayerContext);
+
+    useEffect(() => {
+        if(player.platformUserId){
+            getOverview(player.platformUserId);
+        }
+    }, [player])
+
     return (
-        <Grid>
-            
-        </Grid>
+        <div>
+            <h1>Overview</h1>
+            <p>{JSON.stringify(playerOverview)}</p>
+        </div>
     )
 }
 

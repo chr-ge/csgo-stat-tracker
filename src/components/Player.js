@@ -13,14 +13,15 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 const useStyles = makeStyles({
     root: {
       display: 'flex',
+      height: 165
     },
     content: {
       flex: '1 0 auto',
     },
     cover: {
-      width: 200,
+      width: '40%',
     },
-    button :{
+    button: {
         marginTop: 20
     }
 });
@@ -34,7 +35,7 @@ const Player = () => {
             <CardMedia 
                 className={classes.cover}
                 image={player.avatarUrl}
-                aria-label="Player Avatar"
+                aria-label="Player avatar"
             />
             <CardContent className={classes.content}>
                 <Typography variant="h4" color="textSecondary">
@@ -44,13 +45,14 @@ const Player = () => {
                     {player.platformUserId}
                 </Typography>
                 <Button 
-                    component={Link} 
                     type="button"
+                    component={Link} 
+                    tabIndex="1"
                     aria-label="View player statistics"
                     variant="contained" 
                     color="secondary"
                     className={classes.button}
-                    to={`/player/${player.platformUserId}`}
+                    to={`/player/${player.platformUserId}/overview`}
                 >
                     <EqualizerIcon /> 
                     View Player Stats

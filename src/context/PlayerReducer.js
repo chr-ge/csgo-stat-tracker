@@ -5,6 +5,21 @@ export default (state, action) => {
                 ...state,
                 player: action.payload
             }
+        case 'SET_OVERVIEW':
+            return {
+                ...state,
+                playerOverview: action.payload
+            }
+        case 'SET_WEAPONS':
+            return {
+                ...state,
+                playerWeapons: action.payload
+            }
+        case 'SET_MAPS':
+            return {
+                ...state,
+                playerMaps: action.payload
+            }
         case 'SET_ERROR':
             return {
                 ...state, 
