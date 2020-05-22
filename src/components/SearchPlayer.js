@@ -12,28 +12,27 @@ const SearchPlayer = () => {
         e.preventDefault();
         searchPlayer(player);
     }
-    
+
     return (
-        <>
-            <form onSubmit={handleSubmit} className="search-container">
-                <TextField
-                    name="player"
-                    type="text"
-                    value={player}
-                    label="Search for a player on Steam"
-                    onChange={e => setPlayer(e.target.value)}
-                    fullWidth
-                />
-                <Button
-                    type="submit"
-                    color="primary" 
-                    variant="contained"    
-                >
-                    Search
-                </Button>
+        <form onSubmit={handleSubmit} className="search-container">
+            <TextField
+                name="player"
+                type="text"
+                value={player}
+                label="Search for a player on Steam"
+                onChange={e => setPlayer(e.target.value)}
+                error={error ? true : false}
+                helperText={error}
+                fullWidth
+            />
+            <Button
+                type="submit"
+                color="primary" 
+                variant="contained"    
+            >
+                Search
+            </Button>
             </form>
-            {error && <h2>{error}</h2>}
-        </>
     )
 }
 

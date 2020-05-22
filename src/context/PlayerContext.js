@@ -1,7 +1,7 @@
 
 import React, { createContext, useReducer } from 'react';
 import PlayerReducer from './PlayerReducer';
-import API from '../api/api';
+import API from '../api';
 
 const initialState = {
     player: {},
@@ -13,7 +13,6 @@ export const PlayerContext = createContext(initialState);
 export const PlayerProvider = ({ children }) => {
     const [state, dispatch] = useReducer(PlayerReducer, initialState);
     
-    //Actions
     const searchPlayer = (player) => {
         API
             .get(`/search?platform=steam&query=${player}`)

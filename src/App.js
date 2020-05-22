@@ -5,6 +5,7 @@ import Header from './components/layout/Header';
 import './App.css';
 
 import Home from './pages/Home';
+import Overview from './pages/Overview';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Header />
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route exact path="/player/:player" component={Overview}/>
         </Switch>
       </Router>
     </PlayerProvider>
