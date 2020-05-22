@@ -38,7 +38,7 @@ export const PlayerProvider = ({ children }) => {
     }
 
     return (
-        <PlayerContext.Provider value={{ player: state.player, searchPlayer}}>
+        <PlayerContext.Provider value={{ player: state.player, error: state.error, searchPlayer}}>
             {children}
         </PlayerContext.Provider>
     );
