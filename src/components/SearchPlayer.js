@@ -14,13 +14,14 @@ const SearchPlayer = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="search-container">
             <TextField
                 name="player"
                 type="text"
                 value={player}
-                label="Search Player"
+                label="Search for a player on Steam"
                 onChange={e => setPlayer(e.target.value)}
+                fullWidth
             />
             <Button
                 type="submit"

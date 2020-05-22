@@ -16,3 +16,13 @@ body {
   margin: 0 auto;
   max-width: 1000px;
 }
+
+.search-container {
+  margin: 3rem auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #e2e2e2;
+  border-radius: .25rem;
+}
