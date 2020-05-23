@@ -2,6 +2,17 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-color: #ffcdab #666662;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+*::-webkit-scrollbar-track {
+  background: #666662;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #ffcdab;
 }
 
 body {
