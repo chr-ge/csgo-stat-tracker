@@ -65,7 +65,7 @@ const PlayerStats = () => {
         <Container style={{ marginTop: '6rem'}}>
             <Grid container spacing={2}>
                 <Grid item sm={4}>
-                    <Player />
+                    {/* <Player /> */}
                 </Grid>
                 <Grid item sm={8}>
                     <Paper className={classes.root}>

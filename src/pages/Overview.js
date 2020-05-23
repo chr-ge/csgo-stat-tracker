@@ -106,7 +106,7 @@ const Overview = () => {
                     <Typography variant="h5" className={classes.details}><InfoIcon color="primary" style={{ marginRight: 5}}/> Player Details</Typography>
             
                     <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label="simple table">
+                        <Table className={classes.table} aria-label="Player details table">
                             <TableBody>
                                 {Object.keys(tableData).map((row, i) => (
                                     <TableRow key={i}>
