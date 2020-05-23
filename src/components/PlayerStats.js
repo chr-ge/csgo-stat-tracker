@@ -31,7 +31,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
+                <Box py={3}>
                     {children}
                 </Box>
             )}

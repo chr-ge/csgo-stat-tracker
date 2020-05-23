@@ -94,6 +94,9 @@ export const PlayerProvider = ({ children }) => {
         <PlayerContext.Provider 
             value={{ 
                 player: state.player, 
+                playerOverview: state.playerOverview,
+                playerWeapons: state.playerWeapons,
+                playerMaps: state.playerMaps,
                 error: state.error, 
                 searchPlayer, 
                 getOverview,

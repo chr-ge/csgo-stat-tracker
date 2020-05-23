@@ -8,7 +8,9 @@ const Maps = () => {
         if(player.platformUserId){
             getMaps(player.platformUserId);
         }
-    }, [player])
+    }, 
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    [player])
 
     return (
         <div>
