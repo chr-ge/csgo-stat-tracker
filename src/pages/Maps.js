@@ -18,10 +18,9 @@ const Maps = () => {
     const { player, playerMaps, getMaps } = useContext(PlayerContext);
 
     useEffect(() => {
-        // if(player.platformUserId){
-        //     getMaps(player.platformUserId);
-        // }
-        getMaps('76561198164316555');
+        if(player.platformUserId){
+            getMaps(player.platformUserId);
+        }
     }, 
     //eslint-disable-next-line react-hooks/exhaustive-deps
     [player])
@@ -33,15 +32,15 @@ const Maps = () => {
             {!sortedPlayerMaps[0] 
             ? <div style={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="secondary" /></div>
             : <>
-                <Typography variant="h4">Most Played Maps</Typography>
+                <Typography variant="h4" style={{ marginBottom: 10}}>Most Played Maps</Typography>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center" padding="checkbox"><ExploreIcon /></TableCell>
-                                <TableCell align="left">Map</TableCell>
-                                <TableCell align="right">Rounds</TableCell>
-                                <TableCell align="right">Wins</TableCell>
+                                <TableCell align="center" padding="checkbox"><ExploreIcon style={{ verticalAlign: 'middle'}}/></TableCell>
+                                <TableCell align="left" ><Typography variant="h6" color="secondary">Map</Typography></TableCell>
+                                <TableCell align="right"><Typography variant="h6" color="secondary">Rounds</Typography></TableCell>
+                                <TableCell align="right"><Typography variant="h6" color="secondary">Wins</Typography></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
