@@ -38,7 +38,7 @@ const Player = () => {
                 aria-label="Player avatar"
             />
             <CardContent className={classes.content}>
-                <Typography variant="h4" color="textSecondary">
+                <Typography variant="h4" color="textPrimary">
                     {player.platformUserHandle}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
@@ -52,6 +52,7 @@ const Player = () => {
                     variant="contained" 
                     color="secondary"
                     className={classes.button}
+                    style={{ color: 'black' }}
                     to={`/player/${player.platformUserId}/overview`}
                 >
                     <EqualizerIcon /> 

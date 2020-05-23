@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box';
 import Overview from '../pages/Overview';
 import Weapons from '../pages/Weapons';
 import Maps from '../pages/Maps';
+import Player from './Player';
 
 const useStyles = makeStyles({
     root: {
@@ -64,7 +65,7 @@ const PlayerStats = () => {
         <Container style={{ marginTop: '6rem'}}>
             <Grid container spacing={2}>
                 <Grid item sm={4}>
-                    {/* <PlayerGrid /> */}
+                    <Player />
                 </Grid>
                 <Grid item sm={8}>
                     <Paper className={classes.root}>

@@ -21,7 +21,7 @@ const App = () => {
       <CssBaseline />
       <PlayerProvider>
         <Router>
-        <Header />
+          <Header />
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/player/:player/overview" component={PlayerStats}/>

@@ -9,6 +9,7 @@ import Chip from '@material-ui/core/Chip';
 import HistoryIcon from '@material-ui/icons/History';
 import InfoIcon from '@material-ui/icons/Info';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress  from '@material-ui/core/CircularProgress';
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -22,6 +23,10 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    loading: { 
+        display: 'flex',
+        justifyContent: 'center'
     },
     cardsRow: {
         paddingTop: '1.5rem'
@@ -58,61 +63,63 @@ const Overview = () => {
     console.log(playerOverview);
     return (
         <div>
-           {playerOverview.timePlayed && 
-           <>
-                <div className={classes.header}>
-                    <Typography variant="h4">Lifetime Overview</Typography>
-                    <div>
-                        <Chip 
-                            label={`${playerOverview.timePlayed.displayValue} Play Time`} 
-                            icon={<HistoryIcon />}
-                            className={classes.chip}
-                        />
-                        <Chip 
-                            label={`${playerOverview.matchesPlayed.displayValue} Matches`}
-                            color="primary" 
-                            variant="outlined"
-                        />
+           {!playerOverview.timePlayed 
+            ?   <div className={classes.loading}><CircularProgress color="secondary"/></div>
+            :
+                <>
+                    <div className={classes.header}>
+                        <Typography variant="h4">Lifetime Overview</Typography>
+                        <div>
+                            <Chip 
+                                label={`${playerOverview.timePlayed.displayValue} Play Time`} 
+                                icon={<HistoryIcon />}
+                                className={classes.chip}
+                            />
+                            <Chip 
+                                label={`${playerOverview.matchesPlayed.displayValue} Matches`}
+                                color="primary" 
+                                variant="outlined"
+                            />
+                        </div>
                     </div>
-                </div>
-                <Grid container spacing={2} className={classes.cardsRow}>
-                    <Grid item xs={3}>
-                        <StatisticCard displayName={playerOverview.kd.displayName} displayValue={playerOverview.kd.displayValue}/>  
-                    </Grid>
-                    <Grid item xs={3}>
-                        <StatisticCard displayName={playerOverview.kills.displayName} displayValue={playerOverview.kills.displayValue}/>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <StatisticCard displayName={playerOverview.wlPercentage.displayName} displayValue={playerOverview.wlPercentage.displayValue}/>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <StatisticCard displayName={playerOverview.mvp.displayName} displayValue={playerOverview.mvp.displayValue}/>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={2} className={classes.cardsRow}>
-                    {Object.keys(cardsData).map((stat, i) => 
-                        <Grid item xs={2} key={i}>
-                            <StatisticCard displayName={cardsData[stat].displayName} displayValue={cardsData[stat].displayValue} />
+                    <Grid container spacing={2} className={classes.cardsRow}>
+                        <Grid item xs={3}>
+                            <StatisticCard displayName={playerOverview.kd.displayName} displayValue={playerOverview.kd.displayValue}/>  
                         </Grid>
-                    )}
-                </Grid>
-                <Typography variant="h5" className={classes.details}><InfoIcon color="primary" style={{ marginRight: 5}}/> Player Details</Typography>
-           
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableBody>
-                            {Object.keys(tableData).map((row, i) => (
-                                <TableRow key={i}>
-                                    <TableCell component="th" scope="row">
-                                        {tableData[row].displayName}
-                                    </TableCell>
-                                    <TableCell align="right">{tableData[row].displayValue}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </>
+                        <Grid item xs={3}>
+                            <StatisticCard displayName={playerOverview.kills.displayName} displayValue={playerOverview.kills.displayValue}/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <StatisticCard displayName={playerOverview.wlPercentage.displayName} displayValue={playerOverview.wlPercentage.displayValue}/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <StatisticCard displayName={playerOverview.mvp.displayName} displayValue={playerOverview.mvp.displayValue}/>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2} className={classes.cardsRow}>
+                        {Object.keys(cardsData).map((stat, i) => 
+                            <Grid item xs={2} key={i}>
+                                <StatisticCard displayName={cardsData[stat].displayName} displayValue={cardsData[stat].displayValue} />
+                            </Grid>
+                        )}
+                    </Grid>
+                    <Typography variant="h5" className={classes.details}><InfoIcon color="primary" style={{ marginRight: 5}}/> Player Details</Typography>
+            
+                    <TableContainer component={Paper}>
+                        <Table className={classes.table} aria-label="simple table">
+                            <TableBody>
+                                {Object.keys(tableData).map((row, i) => (
+                                    <TableRow key={i}>
+                                        <TableCell component="th" scope="row">
+                                            {tableData[row].displayName}
+                                        </TableCell>
+                                        <TableCell align="right">{tableData[row].displayValue}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </>
             }
         
         </div>
