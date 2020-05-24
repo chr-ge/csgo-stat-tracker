@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 const Player = () => {
     const classes = useStyles();
-    const { player } = useContext(PlayerContext);
+    const { player, playerOverview } = useContext(PlayerContext);
     
     return (
         <Card className={classes.root}>
@@ -44,7 +44,7 @@ const Player = () => {
                 <Typography variant="subtitle1" color="textSecondary">
                     {player.platformUserId}
                 </Typography>
-                <Button 
+                {!playerOverview.timePlayed && <Button 
                     type="button"
                     component={Link} 
                     tabIndex="1"
@@ -57,7 +57,7 @@ const Player = () => {
                 >
                     <EqualizerIcon /> 
                     View Player Stats
-                </Button>
+                </Button>}
             </CardContent>
         </Card>
     )

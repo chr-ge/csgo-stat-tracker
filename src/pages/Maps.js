@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
+import LoadingProgress from '../components/LoadingProgress';
 
 //material-ui
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +12,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import ExploreIcon from '@material-ui/icons/Explore';
 
 const Maps = () => {
@@ -30,11 +30,11 @@ const Maps = () => {
     return (
         <div>
             {!sortedPlayerMaps[0] 
-            ? <div style={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="secondary" /></div>
+            ? <LoadingProgress />
             : <>
-                <Typography variant="h4" style={{ marginBottom: 10}}>Most Played Maps</Typography>
+                <Typography variant="h4" style={{ marginBottom: '1.5rem'}}>Most Played Maps</Typography>
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table">
+                    <Table aria-label="maps table">
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center" padding="checkbox"><ExploreIcon style={{ verticalAlign: 'middle'}}/></TableCell>
@@ -46,12 +46,8 @@ const Maps = () => {
                         <TableBody>
                         {sortedPlayerMaps.map((map, i) => (
                             <TableRow key={i}>
-                                <TableCell >
-                                    <Avatar src={map.metadata.imageUrl} />
-                                </TableCell>
-                                <TableCell component="th" scope="row">
-                                    {map.metadata.name}
-                                </TableCell>
+                                <TableCell><Avatar src={map.metadata.imageUrl} /></TableCell>
+                                <TableCell component="th" scope="row">{map.metadata.name}</TableCell>
                                 <TableCell align="right">{map.stats.rounds.displayValue}</TableCell>
                                 <TableCell align="right">{map.stats.wins.displayValue}</TableCell>
                             </TableRow>

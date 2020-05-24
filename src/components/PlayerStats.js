@@ -27,8 +27,8 @@ const TabPanel = ({ children, value, index, ...other }) => {
         <div
             role="tabpanel"
             hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
+            id={`category-tabpanel-${index}`}
+            aria-labelledby={`category-tab-${index}`}
             {...other}
         >
             {value === index && (
@@ -48,8 +48,8 @@ TabPanel.propTypes = {
 
 const a11yProps = (index) => {
     return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
+        id: `category-tab-${index}`,
+        'aria-controls': `category-tabpanel-${index}`,
     };
 }
 
@@ -65,7 +65,7 @@ const PlayerStats = () => {
         <Container style={{ marginTop: '6rem'}}>
             <Grid container spacing={2}>
                 <Grid item sm={4}>
-                    {/* <Player /> */}
+                    <Player />
                 </Grid>
                 <Grid item sm={8}>
                     <Paper className={classes.root}>

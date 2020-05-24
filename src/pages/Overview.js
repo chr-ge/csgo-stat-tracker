@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
 import StatisticCard from '../components/StatisticCard';
+import LoadingProgress from '../components/LoadingProgress';
 
 //material-ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +10,6 @@ import Chip from '@material-ui/core/Chip';
 import HistoryIcon from '@material-ui/icons/History';
 import InfoIcon from '@material-ui/icons/Info';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress  from '@material-ui/core/CircularProgress';
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -46,10 +46,9 @@ const Overview = () => {
     const classes = useStyles();
 
     useEffect(() => {
-        // if(player.platformUserId){
-        //     getOverview(player.platformUserId);
-        // }
-        getOverview('76561198164316555');
+        if(player.platformUserId){
+            getOverview(player.platformUserId);
+        }
     }, 
     //eslint-disable-next-line react-hooks/exhaustive-deps
     [player])
@@ -60,11 +59,10 @@ const Overview = () => {
     const tableData = (({ moneyEarned, damage, shotsFired, shotsHit, roundsPlayed, dominations, dominationOverkills, dominationRevenges }) =>
         ({ moneyEarned, damage, shotsFired, shotsHit, roundsPlayed, dominations, dominationOverkills, dominationRevenges }))(playerOverview);
 
-    console.log(playerOverview);
     return (
         <div>
            {!playerOverview.timePlayed 
-            ?   <div className={classes.loading}><CircularProgress color="secondary"/></div>
+            ?   <LoadingProgress />
             :
                 <>
                     <div className={classes.header}>
