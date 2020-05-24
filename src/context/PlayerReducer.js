@@ -29,9 +29,16 @@ export default (state, action) => {
                 }
             }
         case 'HIDE_PROFILE_BUTTON':
-            return{
+            return {
                 ...state, 
                 showProfileButton: false
+            }
+        case 'RESET_PLAYER':
+            return {
+                ...state, 
+                error: {},
+                showProfileButton: true,
+                player: {}
             }
         default:
             return state;

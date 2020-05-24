@@ -1,6 +1,7 @@
 import React from 'react';
-import Player from './Player';
-import PlayerStats from './PlayerStats';
+import Player from '../Player';
+import PlayerStats from '../PlayerStats';
+import SearchAgainButton from '../SearchAgainButton';
 
 //material-ui
 import Container from '@material-ui/core/Container';
@@ -11,6 +12,7 @@ const PlayerGrid = () => (
         <Grid container spacing={2}>
             <Grid item sm={4}>
                 <Player />
+                <SearchAgainButton />
             </Grid>
             <Grid item sm={8}>
                 <PlayerStats />

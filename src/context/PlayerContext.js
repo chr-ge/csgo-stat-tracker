@@ -97,6 +97,12 @@ export const PlayerProvider = ({ children }) => {
         });
     } 
 
+    const resetPlayer = () => {
+        dispatch({
+            type: 'RESET_PLAYER'
+        });
+    }
+
     return (
         <PlayerContext.Provider 
             value={{ 
@@ -110,7 +116,8 @@ export const PlayerProvider = ({ children }) => {
                 getOverview,
                 getWeapons,
                 getMaps,
-                hideProfileButton
+                hideProfileButton,
+                resetPlayer
             }}
         >
             {children}

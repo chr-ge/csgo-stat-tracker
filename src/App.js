@@ -5,13 +5,9 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Header from './components/layout/Header';
 import themeObject from './util/theme';
-import './App.css';
-
+import PlayerGrid from './components/layout/PlayerGrid';
 import Home from './pages/Home';
-// import Overview from './pages/PlayerStats';
-// import Weapons from './pages/Weapons';
-// import Maps from './pages/Maps';
-import PlayerGrid from './components/PlayerGrid';
+import './App.css';
 
 const theme = createMuiTheme(themeObject);
 
