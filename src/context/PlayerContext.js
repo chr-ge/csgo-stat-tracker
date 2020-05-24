@@ -8,7 +8,8 @@ const initialState = {
     playerOverview: {},
     playerWeapons: [],
     playerMaps: [],
-    error: ''
+    showProfileButton: true,
+    error: {}
 }
 
 export const PlayerContext = createContext(initialState);
@@ -51,7 +52,7 @@ export const PlayerProvider = ({ children }) => {
             .catch((error) => {
                 dispatch({
                     type: 'SET_ERROR',
-                    payload: error.response.data.errors.message
+                    payload: error.response.data.errors[0]
                 });
             })
     }
@@ -90,6 +91,12 @@ export const PlayerProvider = ({ children }) => {
             })
     }
 
+    const hideProfileButton = () => {
+        dispatch({
+            type: 'HIDE_PROFILE_BUTTON'
+        });
+    } 
+
     return (
         <PlayerContext.Provider 
             value={{ 
@@ -97,11 +104,13 @@ export const PlayerProvider = ({ children }) => {
                 playerOverview: state.playerOverview,
                 playerWeapons: state.playerWeapons,
                 playerMaps: state.playerMaps,
+                showProfileButton: state.showProfileButton,
                 error: state.error, 
                 searchPlayer, 
                 getOverview,
                 getWeapons,
-                getMaps
+                getMaps,
+                hideProfileButton
             }}
         >
             {children}

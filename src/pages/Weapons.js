@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { PlayerContext } from '../context/PlayerContext';
 import LoadingProgress from '../components/LoadingProgress';
+import ErrorCard from '../components/ErrorCard';
 
 //material-ui
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -115,7 +115,7 @@ const a11yProps = (index) => {
 }
 
 const Weapons = () => {
-    const { player, playerWeapons, getWeapons } = useContext(PlayerContext);
+    const { player, playerWeapons, getWeapons, error } = useContext(PlayerContext);
 
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -125,7 +125,7 @@ const Weapons = () => {
     };
   
     useEffect(() => {
-        if(player.platformUserId){
+        if(player.platformUserId && !error.code){
             getWeapons(player.platformUserId);
         }
     }, 
@@ -136,7 +136,9 @@ const Weapons = () => {
 
     return (
       <div>
-        {!playerWeapons[0] 
+        {error.code
+            ?   <ErrorCard error={error}/>
+            :   !playerWeapons[0]
             ?   <LoadingProgress />
             :   <>
                     <Typography variant="h4" className={classes.title}>Most Used Weapons</Typography>

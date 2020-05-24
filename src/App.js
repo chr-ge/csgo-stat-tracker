@@ -11,7 +11,7 @@ import Home from './pages/Home';
 // import Overview from './pages/PlayerStats';
 // import Weapons from './pages/Weapons';
 // import Maps from './pages/Maps';
-import PlayerStats from './components/PlayerStats';
+import PlayerGrid from './components/PlayerGrid';
 
 const theme = createMuiTheme(themeObject);
 
@@ -24,9 +24,9 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/player/:player/overview" component={PlayerStats}/>
-            <Route exact path="/player/:player/weapons" component={PlayerStats}/>
-            <Route exact path="/player/:player/maps" component={PlayerStats}/>
+            <Route exact path="/player/:player/overview" component={PlayerGrid}/>
+            <Route exact path="/player/:player/weapons" component={PlayerGrid}/>
+            <Route exact path="/player/:player/maps" component={PlayerGrid}/>
           </Switch>
         </Router>
       </PlayerProvider>

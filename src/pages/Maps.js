@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
 import LoadingProgress from '../components/LoadingProgress';
+import ErrorCard from '../components/ErrorCard';
 
 //material-ui
 import Typography from '@material-ui/core/Typography';
@@ -15,10 +16,10 @@ import Avatar from '@material-ui/core/Avatar';
 import ExploreIcon from '@material-ui/icons/Explore';
 
 const Maps = () => {
-    const { player, playerMaps, getMaps } = useContext(PlayerContext);
+    const { player, playerMaps, getMaps, error } = useContext(PlayerContext);
 
     useEffect(() => {
-        if(player.platformUserId){
+        if(player.platformUserId && !error.code){
             getMaps(player.platformUserId);
         }
     }, 
@@ -29,8 +30,10 @@ const Maps = () => {
 
     return (
         <div>
-            {!sortedPlayerMaps[0] 
-            ? <LoadingProgress />
+            {error.code
+            ?   <ErrorCard error={error}/>
+            :   !playerMaps[0]
+            ?   <LoadingProgress />
             : <>
                 <Typography variant="h4" style={{ marginBottom: '1.5rem'}}>Most Played Maps</Typography>
                 <TableContainer component={Paper}>

@@ -23,7 +23,15 @@ export default (state, action) => {
         case 'SET_ERROR':
             return {
                 ...state, 
-                error: action.payload
+                error: {
+                    code: action.payload.code,
+                    message: action.payload.message
+                }
+            }
+        case 'HIDE_PROFILE_BUTTON':
+            return{
+                ...state, 
+                showProfileButton: false
             }
         default:
             return state;

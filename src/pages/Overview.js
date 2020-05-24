@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
 import StatisticCard from '../components/StatisticCard';
 import LoadingProgress from '../components/LoadingProgress';
+import ErrorCard from '../components/ErrorCard';
 
 //material-ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,11 +43,11 @@ const useStyles = makeStyles({
 });
 
 const Overview = () => {
-    const { player, playerOverview, getOverview } = useContext(PlayerContext);
+    const { player, playerOverview, getOverview, error } = useContext(PlayerContext);
     const classes = useStyles();
 
     useEffect(() => {
-        if(player.platformUserId){
+        if(player.platformUserId && !error.code){
             getOverview(player.platformUserId);
         }
     }, 
@@ -61,7 +62,9 @@ const Overview = () => {
 
     return (
         <div>
-           {!playerOverview.timePlayed 
+           {error.code
+            ?   <ErrorCard error={error}/>
+            :   !playerOverview.timePlayed 
             ?   <LoadingProgress />
             :
                 <>

@@ -21,8 +21,8 @@ const SearchPlayer = () => {
                 value={player}
                 label="Search for a player on Steam"
                 onChange={e => setPlayer(e.target.value)}
-                error={error ? true : false}
-                helperText={error}
+                error={error.message ? true : false}
+                helperText={error.message}
                 fullWidth
             />
             <Button

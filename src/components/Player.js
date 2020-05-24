@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 const Player = () => {
     const classes = useStyles();
-    const { player, playerOverview } = useContext(PlayerContext);
+    const { player, showProfileButton, hideProfileButton } = useContext(PlayerContext);
     
     return (
         <Card className={classes.root}>
@@ -44,13 +44,15 @@ const Player = () => {
                 <Typography variant="subtitle1" color="textSecondary">
                     {player.platformUserId}
                 </Typography>
-                {!playerOverview.timePlayed && <Button 
+                {showProfileButton && 
+                <Button 
                     type="button"
                     component={Link} 
                     tabIndex="1"
                     aria-label="View player statistics"
                     variant="contained" 
                     color="secondary"
+                    onClick={hideProfileButton}
                     className={classes.button}
                     style={{ color: 'black' }}
                     to={`/player/${player.platformUserId}/overview`}
