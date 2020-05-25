@@ -24,18 +24,26 @@ export const PlayerProvider = ({ children }) => {
                 if(result.data.data.length === 0) {
                     dispatch({
                         type: 'SET_ERROR',
-                        payload: 'No Player Found'
+                        payload: {
+                            code: '404',
+                            message: "No Player Found"
+                        }
+                    });
+                    console.log(player);
+                }
+                else{
+                    dispatch({
+                        type: 'SEARCH_PLAYER',
+                        payload: result.data.data[0]
                     });
                 }
-                dispatch({
-                    type: 'SEARCH_PLAYER',
-                    payload: result.data.data[0]
-                });
+                
             })
             .catch((error) => {
+                console.log(player);
                 dispatch({
                     type: 'SET_ERROR',
-                    payload: error.response.data.errors
+                    payload: error.response.data.errors[0]
                 });
             })
     }
@@ -69,7 +77,7 @@ export const PlayerProvider = ({ children }) => {
             .catch((error) => {
                 dispatch({
                     type: 'SET_ERROR',
-                    payload: error.response.data.errors.message
+                    payload: error.response.data.errors[0]
                 });
             })
     }
@@ -86,7 +94,7 @@ export const PlayerProvider = ({ children }) => {
             .catch((error) => {
                 dispatch({
                     type: 'SET_ERROR',
-                    payload: error.response.data.errors.message
+                    payload: error.response.data.errors[0]
                 });
             })
     }
