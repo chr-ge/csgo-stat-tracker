@@ -7,12 +7,13 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 const SearchPlayer = () => {
-    const { searchPlayer, error } = useContext(PlayerContext);
+    const { searchPlayer, error, resetPlayer } = useContext(PlayerContext);
     const [player, setPlayer] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
         searchPlayer(player);
+        resetPlayer();
     }
 
     return (
