@@ -10,7 +10,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -125,13 +124,10 @@ const Weapons = () => {
     };
   
     useEffect(() => {
-        window.history.pushState(null, null, `/player/${player.platformUserId}/weapons`);
         if(player.platformUserId && !error.code){
             getWeapons(player.platformUserId);
         }
-    }, 
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    [player])
+    })
 
     const sortedWeapons = playerWeapons.sort((a,b) => a.stats.kills.value > b.stats.kills.value ? -1 : 1);
 

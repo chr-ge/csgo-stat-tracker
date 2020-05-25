@@ -55,7 +55,7 @@ const Player = () => {
                     onClick={hideProfileButton}
                     className={classes.button}
                     style={{ color: 'black' }}
-                    to={`/player/${player.platformUserId}/overview`}
+                    to={`/player/${player.platformUserId}`}
                     fullWidth
                 >
                     <EqualizerIcon /> 

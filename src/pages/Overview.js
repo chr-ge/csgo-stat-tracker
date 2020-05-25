@@ -47,13 +47,10 @@ const Overview = () => {
     const classes = useStyles();
 
     useEffect(() => {
-        window.history.pushState(null, null, `/player/${player.platformUserId}/overview`);
         if(player.platformUserId && !error.code){
             getOverview(player.platformUserId);
         }
-    }, 
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    [player])
+    })
 
     const cardsData = (({ headshots, headshotPct, wins, losses, score, deaths, bombsPlanted, bombsDefused, hostagesRescued, shotsAccuracy, snipersKilled, roundsWon }) =>
          ({ headshots, headshotPct, wins, losses, score, deaths, bombsPlanted, bombsDefused, hostagesRescued, shotsAccuracy, snipersKilled, roundsWon }))(playerOverview);

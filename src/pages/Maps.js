@@ -18,13 +18,10 @@ const Maps = () => {
     const { player, playerMaps, getMaps, error } = useContext(PlayerContext);
 
     useEffect(() => {
-        window.history.pushState(null, null, `/player/${player.platformUserId}/maps`);
         if(player.platformUserId && !error.code){
             getMaps(player.platformUserId);
         }
-    }, 
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    [player])
+    })
     
     const sortedPlayerMaps = playerMaps.sort((a,b) => a.stats.rounds.value > b.stats.rounds.value ? -1 : 1);
 

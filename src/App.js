@@ -20,9 +20,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/player/:player/overview" component={PlayerGrid}/>
-            <Route exact path="/player/:player/weapons" component={PlayerGrid}/>
-            <Route exact path="/player/:player/maps" component={PlayerGrid}/>
+            <Route exact path="/player/:player" component={PlayerGrid}/>
           </Switch>
         </Router>
       </PlayerProvider>

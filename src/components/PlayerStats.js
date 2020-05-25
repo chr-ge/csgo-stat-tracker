@@ -51,7 +51,7 @@ const a11yProps = (index) => {
 }
 
 
-const PlayerStats = () => {
+const PlayerStats = ({ param }) => {
     const classes = useStyles();
     const [activeTab, setActiveTab] = useState(0);
   
