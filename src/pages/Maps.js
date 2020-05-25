@@ -18,6 +18,7 @@ const Maps = () => {
     const { player, playerMaps, getMaps, error } = useContext(PlayerContext);
 
     useEffect(() => {
+        window.history.pushState(null, null, `/player/${player.platformUserId}/maps`);
         if(player.platformUserId && !error.code){
             getMaps(player.platformUserId);
         }

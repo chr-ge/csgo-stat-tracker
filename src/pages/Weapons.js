@@ -125,6 +125,7 @@ const Weapons = () => {
     };
   
     useEffect(() => {
+        window.history.pushState(null, null, `/player/${player.platformUserId}/weapons`);
         if(player.platformUserId && !error.code){
             getWeapons(player.platformUserId);
         }

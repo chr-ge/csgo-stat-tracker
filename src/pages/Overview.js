@@ -47,6 +47,7 @@ const Overview = () => {
     const classes = useStyles();
 
     useEffect(() => {
+        window.history.pushState(null, null, `/player/${player.platformUserId}/overview`);
         if(player.platformUserId && !error.code){
             getOverview(player.platformUserId);
         }
