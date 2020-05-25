@@ -4,6 +4,7 @@ import PlayerReducer from './PlayerReducer';
 import API from '../api';
 
 const initialState = {
+    loading: false,
     player: {},
     playerOverview: {},
     playerWeapons: [],
@@ -18,6 +19,7 @@ export const PlayerProvider = ({ children }) => {
     const [state, dispatch] = useReducer(PlayerReducer, initialState);
     
     const searchPlayer = (player) => {
+        dispatch({ type: 'LOADING' });
         API
             .get(`/search?platform=steam&query=${player}`)
             .then((result) => {
@@ -29,7 +31,6 @@ export const PlayerProvider = ({ children }) => {
                             message: "No Player Found"
                         }
                     });
-                    console.log(player);
                 }
                 else{
                     dispatch({
@@ -40,7 +41,6 @@ export const PlayerProvider = ({ children }) => {
                 
             })
             .catch((error) => {
-                console.log(player);
                 dispatch({
                     type: 'SET_ERROR',
                     payload: error.response.data.errors[0]
@@ -110,10 +110,12 @@ export const PlayerProvider = ({ children }) => {
             type: 'RESET_PLAYER'
         });
     }
-
+    
     return (
+        
         <PlayerContext.Provider 
             value={{ 
+                loading: state.loading,
                 player: state.player, 
                 playerOverview: state.playerOverview,
                 playerWeapons: state.playerWeapons,

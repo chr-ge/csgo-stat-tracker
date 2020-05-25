@@ -1,8 +1,14 @@
 export default (state, action) => {
     switch(action.type) {
+        case 'LOADING':
+            return {
+                ...state,
+                loading: true
+            }
         case 'SEARCH_PLAYER':
             return {
                 ...state,
+                loading: false,
                 player: action.payload
             }
         case 'SET_OVERVIEW':
@@ -23,6 +29,7 @@ export default (state, action) => {
         case 'SET_ERROR':
             return {
                 ...state, 
+                loading: false,
                 error: {
                     code: action.payload.code,
                     message: action.payload.message

@@ -64,7 +64,7 @@ const Overview = () => {
         <div>
            {error.code
             ?   <ErrorCard error={error}/>
-            :   !playerOverview.timePlayed 
+            :   !playerOverview.timePlayed
             ?   <LoadingProgress />
             :
                 <>

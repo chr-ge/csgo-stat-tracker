@@ -56,6 +56,7 @@ const Player = () => {
                     className={classes.button}
                     style={{ color: 'black' }}
                     to={`/player/${player.platformUserId}/overview`}
+                    fullWidth
                 >
                     <EqualizerIcon /> 
                     View Player Stats

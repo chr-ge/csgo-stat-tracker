@@ -8,11 +8,11 @@ import Paper from '@material-ui/core/Paper';
 
 const SearchPlayer = () => {
     const { searchPlayer, error, resetPlayer } = useContext(PlayerContext);
-    const [player, setPlayer] = useState('');
+    const [input, setInput] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
-        searchPlayer(player);
+        searchPlayer(input);
         resetPlayer();
     }
 
@@ -22,9 +22,9 @@ const SearchPlayer = () => {
                 <TextField
                     name="player"
                     type="text"
-                    value={player}
+                    value={input}
                     label="Enter Steam Username"
-                    onChange={e => setPlayer(e.target.value)}
+                    onChange={e => setInput(e.target.value)}
                     error={error.message ? true : false}
                     helperText={error.message}
                     fullWidth
