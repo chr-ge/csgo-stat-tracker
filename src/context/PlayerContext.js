@@ -2,6 +2,10 @@
 import React, { createContext, useReducer } from 'react';
 import PlayerReducer from './PlayerReducer';
 import API from '../api';
+import {
+    LOADING, SEARCH_PLAYER, SET_OVERVIEW, SET_WEAPONS,
+    SET_MAPS, SET_ERROR, HIDE_PROFILE_BUTTON, RESET_PLAYER,
+  } from "./types";
 
 const initialState = {
     loading: false,
@@ -19,13 +23,13 @@ export const PlayerProvider = ({ children }) => {
     const [state, dispatch] = useReducer(PlayerReducer, initialState);
     
     const searchPlayer = (player) => {
-        dispatch({ type: 'LOADING' });
+        dispatch({ type: LOADING });
         API
             .get(`/search?platform=steam&query=${player}`)
             .then((result) => {
                 if(result.data.data.length === 0) {
                     dispatch({
-                        type: 'SET_ERROR',
+                        type: SET_ERROR,
                         payload: {
                             code: '404',
                             message: "No Player Found"
@@ -34,7 +38,7 @@ export const PlayerProvider = ({ children }) => {
                 }
                 else{
                     dispatch({
-                        type: 'SEARCH_PLAYER',
+                        type: SEARCH_PLAYER,
                         payload: result.data.data[0]
                     });
                 }
@@ -42,7 +46,7 @@ export const PlayerProvider = ({ children }) => {
             })
             .catch((error) => {
                 dispatch({
-                    type: 'SET_ERROR',
+                    type: SET_ERROR,
                     payload: error.response.data.errors[0]
                 });
             })
@@ -53,13 +57,13 @@ export const PlayerProvider = ({ children }) => {
             .get(`/profile/steam/${playerId}`)
             .then((result) => {
                 dispatch({
-                    type: 'SET_OVERVIEW',
+                    type: SET_OVERVIEW,
                     payload: result.data.data.segments[0].stats
                 });
             })
             .catch((error) => {
                 dispatch({
-                    type: 'SET_ERROR',
+                    type: SET_ERROR,
                     payload: error.response.data.errors[0]
                 });
             })
@@ -70,13 +74,13 @@ export const PlayerProvider = ({ children }) => {
             .get(`/profile/steam/${playerId}/segments/weapon`)
             .then((result) => {
                 dispatch({
-                    type: 'SET_WEAPONS',
+                    type: SET_WEAPONS,
                     payload: result.data.data
                 });
             })
             .catch((error) => {
                 dispatch({
-                    type: 'SET_ERROR',
+                    type: SET_ERROR,
                     payload: error.response.data.errors[0]
                 });
             })
@@ -87,13 +91,13 @@ export const PlayerProvider = ({ children }) => {
             .get(`/profile/steam/${playerId}/segments/map`)
             .then((result) => {
                 dispatch({
-                    type: 'SET_MAPS',
+                    type: SET_MAPS,
                     payload: result.data.data
                 });
             })
             .catch((error) => {
                 dispatch({
-                    type: 'SET_ERROR',
+                    type: SET_ERROR,
                     payload: error.response.data.errors[0]
                 });
             })
@@ -101,13 +105,13 @@ export const PlayerProvider = ({ children }) => {
 
     const hideProfileButton = () => {
         dispatch({
-            type: 'HIDE_PROFILE_BUTTON'
+            type: HIDE_PROFILE_BUTTON
         });
     } 
 
     const resetPlayer = () => {
         dispatch({
-            type: 'RESET_PLAYER'
+            type: RESET_PLAYER
         });
     }
     

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from "prop-types";
 
 //material-ui
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -12,12 +11,6 @@ import Box from '@material-ui/core/Box';
 import Overview from '../pages/Overview';
 import Weapons from '../pages/Weapons';
 import Maps from '../pages/Maps';
-
-const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-    },
-});
 
 const TabPanel = ({ children, value, index, ...other }) => {
     return (
@@ -50,9 +43,7 @@ const a11yProps = (index) => {
     };
 }
 
-
 const PlayerStats = ({ param }) => {
-    const classes = useStyles();
     const [activeTab, setActiveTab] = useState(0);
   
     const handleChange = (event, newValue) => {
@@ -61,7 +52,7 @@ const PlayerStats = ({ param }) => {
 
     return (
         <>
-            <Paper className={classes.root}>
+            <Paper styles={{ flexGrow: 1 }}>
                 <Tabs
                     value={activeTab}
                     onChange={handleChange}
