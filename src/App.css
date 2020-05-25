@@ -4,7 +4,6 @@
   box-sizing: border-box;
   scrollbar-color: #ffcdab #666662;
 }
-
 *::-webkit-scrollbar {
   width: 16px;
 }
@@ -14,24 +13,29 @@
 *::-webkit-scrollbar-thumb {
   background-color: #ffcdab;
 }
-
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .container {
   padding-top: 80px;
   margin: 0 auto;
   max-width: 1000px;
 }
-
 .search-container {
-  margin: 3rem auto 2rem auto;
+  margin: 2rem auto 2rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+.title-icon {
+  width: 80px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

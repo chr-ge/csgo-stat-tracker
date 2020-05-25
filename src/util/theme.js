@@ -18,6 +18,9 @@ export default {
     }
   },
   typography: {
+    h3: {
+      fontFamily: 'Fredoka One',
+    },
     h4: {
       fontFamily: 'Fredoka One',
     },

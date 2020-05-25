@@ -22,7 +22,7 @@ const SearchPlayer = () => {
                     name="player"
                     type="text"
                     value={player}
-                    label="Search for a player on Steam"
+                    label="Enter Steam Username"
                     onChange={e => setPlayer(e.target.value)}
                     error={error.message ? true : false}
                     helperText={error.message}
