@@ -7,17 +7,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const Header = () => {
-    return (
-        <AppBar>
-            <Container>
-                <Toolbar>
-                    <img src={LogoImage} alt="Logo" width="50" height="50"/>
-                    <Typography variant="h4" style={{ marginLeft: 20}}>CS:GO Stat Tracker</Typography>
-                </Toolbar>
-            </Container>
-        </AppBar>
-    )
-}
+const Header = () => (
+    <AppBar>
+        <Container disableGutters>
+            <Toolbar>
+                <img src={LogoImage} alt="Logo" width="50" height="50"/>
+                <Typography variant="h4" style={{ marginLeft: 15 }}>CS:GO Stat Tracker</Typography>
+            </Toolbar>
+        </Container>
+    </AppBar>
+)
 
 export default Header
