@@ -1,6 +1,6 @@
 ## CS:GO Stat Tracker
 
-Counter-Strike Global Offensive player statistics tracker that give insight on lifetime progress, weapons and map inforamtion.
+Counter-Strike Global Offensive player statistics tracker that gives insight on lifetime progress, weapons and map inforamtion.
 
 ### Live Site: https://csgotracker.netlify.app
 
