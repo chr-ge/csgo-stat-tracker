@@ -17,4 +17,4 @@ https://tracker.gg/developers/docs/titles/csgo
 
 ## License
 
-This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](/LICENSE).
